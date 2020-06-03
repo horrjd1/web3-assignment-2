@@ -1,0 +1,6 @@
+// run development server
+set DEBUG=web3-assignment-2:* & npm start
+
+// make stuff in src 
+// run this and it will convert it into js in the javascripts directory
+npx babel --watch src --out-dir public/javascripts --presets react-app/prod
