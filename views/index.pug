@@ -2,9 +2,15 @@ extends layout
 
 block content
     #like_button_container
+    #test
 
     p this is the index page yay
 
+    
+    a(href="http://localhost:8080/api/countries") link text
+
+
     script(src="https://unpkg.com/react@16/umd/react.development.js" crossorigin)
     script(src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin)
-    script(src="javascripts/like_button.js")
+    script(src="http://code.jquery.com/jquery-3.5.1.js")
+    script(src="/javascripts/index.js" type='module')

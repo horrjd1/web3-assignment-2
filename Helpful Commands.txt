@@ -3,4 +3,12 @@ set DEBUG=web3-assignment-2:* & npm start
 
 // make stuff in src 
 // run this and it will convert it into js in the javascripts directory
-npx babel --watch src --out-dir public/javascripts --presets react-app/prod
+npx babel --watch src --out-dir public/javascripts --presets @babel/preset-react
+
+
+
+npm i @babel/cli
+npm i @babel/core
+npm i @babel/polyfill
+npm i @babel/preset-env
+npm i @babel/preset-react
