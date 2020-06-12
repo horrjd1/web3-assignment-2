@@ -1,20 +1,28 @@
-import React from "react";
-import { Button } from "@material-ui/core";
+//import React from "react";
+//import { Button, TextField } from "../node_modules/@material-ui/core/Button";
 //("use strict");
 
 function AddForm() {
     return (
       <>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Standard" />
-          <TextField id="filled-basic" label="Filled" variant="filled" />
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <h1>Add Form</h1>
+        <form action="localhost:8080/api/countries" method="POST">
+          Name <input type="text" id="name" name="name" />
+          Data <input type="text" id="data" name="data" />
         </form>
-
-        <Button onClick={() => this.setState({ liked: true })}>Submit</Button>
       </>
     );
 }
+
+/*
+<form noValidate autoComplete="off">
+          <TextField id="standard-basic" label="Name" />
+          <TextField id="standard-basic" label="Population" />
+          <TextField id="standard-basic" label="Data" rows={8}/>
+        </form>
+
+        <Button onClick={() => this.setState({ liked: true })}>Submit</Button>
+        */
 
 export default AddForm
 /*

@@ -1,7 +1,9 @@
-//import AddForm from '../public/javascripts/components/addForm';
+import AddForm from './addForm.js';
+import DeleteForm from './deleteForm.js';
 
-import Button from "@material-ui/core/Button";
-
+//import Button from '@material-ui/core/Button';
+//import TextField from "@material-ui/core/TextField";
+ 
 function fetchCountryData() {
   return new Promise((resolve) => {
     $.get("http://localhost:8080/api/countries", function (data) {
@@ -15,17 +17,23 @@ function fetchCountryData() {
     });
   });
 }
-
+/*
 class AddForm extends React.Component {
   render() {
     return (
       <>
-        <h1>hello</h1>
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField id="standard-basic" label="Name" />
+          <TextField id="standard-basic" label="Population" />
+          <TextField id="standard-basic" label="Data" rows={8}/>
+        </form>
+
+        <Button onClick={() => this.setState({ liked: true })}>Submit</Button>
       </>
     );
   }
 }
-
+*/
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,8 +62,8 @@ class App extends React.Component {
     return (
       <div>
         <AddForm />
-        <h1>hello</h1>
-        <h2>Done this</h2>
+        <DeleteForm />
+        <h2>test text</h2>
       </div>
     );
   }
