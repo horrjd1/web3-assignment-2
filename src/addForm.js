@@ -9,6 +9,7 @@ function AddForm() {
         <form action="localhost:8080/api/countries" method="POST">
           Name <input type="text" id="name" name="name" />
           Data <input type="text" id="data" name="data" />
+          <button>Add</button>
         </form>
       </>
     );

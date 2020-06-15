@@ -40,6 +40,8 @@ const workboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
 	mode: 'development',
 
+	entry: ['babel-polyfill', './test.js'],
+
 	output: {
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'public/javascripts')
@@ -90,6 +92,7 @@ module.exports = {
 							sourceMap: true
 						}
 					}
+					
 				]
 			}
 		]

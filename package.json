@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "build": "webpack",
     "debug": "set DEBUG=web3-assignment-2:* & npm start",
-    "babel": "npx babel src --out-dir public/javascripts --presets react-app/prod",
+    "babel": "npx babel --watch src --out-dir public/javascripts --presets @babel/preset-react",
     "deploy": "npm build & npm start"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@webpack-cli/init": "^0.2.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-polyfill": "^6.26.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

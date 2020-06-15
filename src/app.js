@@ -63,7 +63,7 @@ class App extends React.Component {
       <div>
         <AddForm />
         <DeleteForm />
-        <h2>test text</h2>
+        <h2>test text 2 with webpack</h2>
       </div>
     );
   }

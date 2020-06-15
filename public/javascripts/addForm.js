@@ -13,7 +13,7 @@ function AddForm() {
     type: "text",
     id: "data",
     name: "data"
-  })));
+  }), /*#__PURE__*/React.createElement("button", null, "Add")));
 }
 /*
 <form noValidate autoComplete="off">
