@@ -41,8 +41,8 @@ module.exports = {
 	mode: 'development',
 
 	output: {
-		chunkFilename: '[name].[chunkhash].js',
-		filename: '[name].[chunkhash].js',
+		filename: '[name].js',
+		path: path.resolve(__dirname, 'public/javascripts')
 	},
 
 	plugins: [
