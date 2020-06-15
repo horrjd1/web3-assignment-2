@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "webpack"
+    "build": "webpack",
+    "debug": "DEBUG=web3-assignment-2:* & npm start",
+    "babel": "npx babel src --out-dir public/javascripts --presets react-app/prod",
+    "deploy": "npm run babel & npm start"
   },
   "dependencies": {
     "@babel/cli": "^7.10.1",
