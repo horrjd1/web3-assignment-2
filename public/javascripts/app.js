@@ -1,7 +1,7 @@
-import AddForm from './addForm.js';
-import DeleteForm from './deleteForm.js'; //import Button from '@material-ui/core/Button';
+//import AddForm from './addForm.js';
+//import DeleteForm from './deleteForm.js';
+//import Button from '@material-ui/core/Button';
 //import TextField from "@material-ui/core/TextField";
-
 function fetchCountryData() {
   return new Promise(resolve => {
     $.get("http://localhost:8080/api/countries", function (data) {
@@ -15,24 +15,54 @@ function fetchCountryData() {
     });
   });
 }
-/*
+
 class AddForm extends React.Component {
-  render() {
-    return (
-      <>
-        <form className={classes.root} noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Name" />
-          <TextField id="standard-basic" label="Population" />
-          <TextField id="standard-basic" label="Data" rows={8}/>
-        </form>
-
-        <Button onClick={() => this.setState({ liked: true })}>Submit</Button>
-      </>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValues: {}
+    };
   }
-}
-*/
 
+  handleChange(event) {
+    event.preventDefault();
+    let formValues = this.state.formValues;
+    let key = event.target.name;
+    let value = event.target.value;
+    formValues[key] = value;
+    console.log(event.target.name);
+    console.log(event.target.value);
+    this.setState({
+      formValues
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.formValues);
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("form", {
+      onSubmit: this.handleSubmit.bind(this)
+    }, /*#__PURE__*/React.createElement("label", null, " ", "Name:", /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      name: "name",
+      value: this.state.formValues["name"],
+      onChange: this.handleChange.bind(this)
+    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, " ", "Data:", /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      name: "data",
+      value: this.state.formValues["data"],
+      onChange: this.handleChange.bind(this)
+    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+      className: "btn btn-primary",
+      type: "submit",
+      value: "Submit"
+    }));
+  }
+
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -62,7 +92,7 @@ class App extends React.Component {
   }
 
   render() {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(AddForm, null), /*#__PURE__*/React.createElement(DeleteForm, null), /*#__PURE__*/React.createElement("h2", null, "test text"));
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(AddForm, null), /*#__PURE__*/React.createElement("h2", null, "test text"));
   }
 
 }
