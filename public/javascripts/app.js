@@ -117,8 +117,10 @@ class DeleteForm extends React.Component {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Delete Country"), /*#__PURE__*/React.createElement("form", {
       onSubmit: this.handleSubmit.bind(this)
     }, /*#__PURE__*/React.createElement("select", {
-      name: "country",
-      id: "country"
+      name: "name",
+      id: "deleteCountryName",
+      value: this.state.formValues["name"],
+      onChange: this.handleChange.bind(this)
     }, this.countrySelections), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       className: "btn btn-primary",
       type: "submit",

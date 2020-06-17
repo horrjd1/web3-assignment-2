@@ -125,7 +125,7 @@ class DeleteForm extends React.Component {
       <>
         <h2>Delete Country</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <select name="country" id="country">
+          <select name="name" id="deleteCountryName" value={this.state.formValues["name"]} onChange={this.handleChange.bind(this)}>
             {this.countrySelections}
           </select>
           <br />
