@@ -18,6 +18,7 @@ function fetchCountryData() {
   });
 }
 
+/*
 class AddForm extends React.Component {
   constructor(props) {
     super(props);
@@ -34,8 +35,8 @@ class AddForm extends React.Component {
 
     formValues[key] = value;
 
-    console.log(event.target.name)
-    console.log(event.target.value)
+    console.log(event.target.name);
+    console.log(event.target.value);
 
     this.setState({ formValues });
   }
@@ -75,38 +76,109 @@ class AddForm extends React.Component {
     );
   }
 }
+*/
+
+class DeleteForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValues: {},
+      countryData: this.props.data,
+    };
+
+    // saving the passed country data prop into state
+    this.state.countryData = this.props.data
+
+    //making the options for the country drop down
+    this.countrySelections = this.state.countryData.map((item, key) => (
+      <option value={item.name}>{item.name}</option>
+    ));
+    
+  }
+
+  // When data is changed in the input fields
+  handleChange(event) {
+    event.preventDefault();
+
+    //creating an object containing the forms fields and inputted data
+    let formValues = this.state.formValues;
+    let key = event.target.name;
+    let value = event.target.value;
+
+    formValues[key] = value;
+
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    this.setState({ formValues });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    // jsonify data response
+    console.log(this.state.formValues);
+  }
+
+  render() {
+    // only one tag can be returned so containing h2 and form within empty <>
+    return (
+      <>
+        <h2>Delete Country</h2>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <select name="country" id="country">
+            {this.countrySelections}
+          </select>
+          <br />
+          <input className="btn btn-primary" type="submit" value="Submit" />
+        </form>
+      </>
+    );
+  }
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countryData: [] };
+    this.state = { countryData: null };
   }
 
   componentDidMount() {
+    console.log('before data')
+    console.log(this.state.countryData);
     this.loadCountryData();
   }
 
   async loadCountryData() {
-    localStorage.removeItem("countries");
+    // used for testing the fetchCountryData
+    // localStorage.removeItem("countries");
 
-    // If data doesnt already exist on the browser
+    // If countries data doesnt already exist on the browser
     if (!("countries" in localStorage)) {
       //waits until ajax is done getting the countries data
       await fetchCountryData();
     }
 
     const data = JSON.parse(localStorage.getItem("countries"));
-    this.setState({ countryData: data });
-    console.log(data);
+    // Setting the state
+    // this will make the component re-render
+    this.setState({ countryData: data })
+    console.log('data')
+    console.log(this.state.countryData);
   }
 
   render() {
-    return (
-      <div>
-        <AddForm />
-        <h2>test text</h2>
-      </div>
-    );
+    // waits until the data is loaded from the fetch or local storage before loading the delete form
+    // this is so that the form isnt loaded and the empty state isnt passed to the delete component before the countryData is set
+    if (this.state.countryData) {
+      return (
+        <div>
+          <DeleteForm data={this.state.countryData} />
+        </div>
+      );
+    }
+    else {
+      return <div>Loading...</div>
+    }
   }
 }
 
