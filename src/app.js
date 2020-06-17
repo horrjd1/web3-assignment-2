@@ -115,8 +115,15 @@ class DeleteForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // jsonify data response
-    console.log(this.state.formValues);
+    
+    //Makes the delete request to the site
+    fetch('http://localhost:8080/api/countries/' + this.state.formValues['name'], {
+      method: 'DELETE',
+    }).then(response => console.log(response));
+
+    //provide success feedback
+
+    //update local storage?
   }
 
   render() {
