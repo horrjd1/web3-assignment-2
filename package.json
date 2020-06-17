@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "debug": "set DEBUG=web3-assignment-2:* & npm start",
+    "babel": "npx babel --watch src --out-dir public/javascripts --presets @babel/preset-react",
+    "deploy": "npm babel & npm start"
   },
   "dependencies": {
     "@babel/cli": "^7.10.1",

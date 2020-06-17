@@ -2,6 +2,7 @@
 //import { Button, TextField } from "../node_modules/@material-ui/core/Button";
 //("use strict");
 
+/*
 function AddForm() {
     return (
       <>
@@ -13,17 +14,23 @@ function AddForm() {
       </>
     );
 }
+*/
 
-/*
-<form noValidate autoComplete="off">
-          <TextField id="standard-basic" label="Name" />
-          <TextField id="standard-basic" label="Population" />
-          <TextField id="standard-basic" label="Data" rows={8}/>
-        </form>
+import React from 'react';
 
-        <Button onClick={() => this.setState({ liked: true })}>Submit</Button>
-        */
-
+class AddForm extends React.Component {
+  render() {
+    return (
+      <form>
+        <h1>Hello</h1>
+        <p>Enter your name:</p>
+        <input
+          type="text"
+        />
+      </form>
+    );
+  }
+}
 export default AddForm
 /*
 let domContainer = document.querySelector("#like_button_container");
