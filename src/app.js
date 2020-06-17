@@ -18,7 +18,6 @@ function fetchCountryData() {
   });
 }
 
-/*
 class AddForm extends React.Component {
   constructor(props) {
     super(props);
@@ -35,48 +34,52 @@ class AddForm extends React.Component {
 
     formValues[key] = value;
 
-    console.log(event.target.name);
-    console.log(event.target.value);
-
     this.setState({ formValues });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.formValues);
+
+    // Adding empty data key since form doesnt have option to add the json data 
+    this.state.formValues.data = {}
+
+    // sending request to api to create the country
+    fetch(
+      "http://localhost:8080/api/countries",
+      {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state.formValues)
+      }
+    ).then((response) => console.log(response));
+
+    //provide success feedback
+
+    //update local storage?
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>
-          {" "}
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={this.state.formValues["name"]}
-            onChange={this.handleChange.bind(this)}
-          />
-        </label>
-        <br />
-        <label>
-          {" "}
-          Data:
-          <input
-            type="text"
-            name="data"
-            value={this.state.formValues["data"]}
-            onChange={this.handleChange.bind(this)}
-          />
-        </label>
-        <br />
-        <input className="btn btn-primary" type="submit" value="Submit" />
-      </form>
+      <>
+        <h2>Add Country</h2>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <label>
+            {" "}
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={this.state.formValues["name"]}
+              onChange={this.handleChange.bind(this)}
+            />
+          </label>
+          <br />
+          <input className="btn btn-primary" type="submit" value="Submit" />
+        </form>
+      </>
     );
   }
 }
-*/
 
 class DeleteForm extends React.Component {
   constructor(props) {
@@ -87,13 +90,12 @@ class DeleteForm extends React.Component {
     };
 
     // saving the passed country data prop into state
-    this.state.countryData = this.props.data
+    this.state.countryData = this.props.data;
 
     //making the options for the country drop down
     this.countrySelections = this.state.countryData.map((item, key) => (
       <option value={item.name}>{item.name}</option>
     ));
-    
   }
 
   // When data is changed in the input fields
@@ -107,19 +109,19 @@ class DeleteForm extends React.Component {
 
     formValues[key] = value;
 
-    console.log(event.target.name);
-    console.log(event.target.value);
-
     this.setState({ formValues });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    
+
     //Makes the delete request to the site
-    fetch('http://localhost:8080/api/countries/' + this.state.formValues['name'], {
-      method: 'DELETE',
-    }).then(response => console.log(response));
+    fetch(
+      "http://localhost:8080/api/countries/" + this.state.formValues["name"],
+      {
+        method: "DELETE",
+      }
+    ).then((response) => console.log(response));
 
     //provide success feedback
 
@@ -132,7 +134,12 @@ class DeleteForm extends React.Component {
       <>
         <h2>Delete Country</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <select name="name" id="deleteCountryName" value={this.state.formValues["name"]} onChange={this.handleChange.bind(this)}>
+          <select
+            name="name"
+            id="deleteCountryName"
+            value={this.state.formValues["name"]}
+            onChange={this.handleChange.bind(this)}
+          >
             {this.countrySelections}
           </select>
           <br />
@@ -150,8 +157,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('before data')
-    console.log(this.state.countryData);
     this.loadCountryData();
   }
 
@@ -168,9 +173,7 @@ class App extends React.Component {
     const data = JSON.parse(localStorage.getItem("countries"));
     // Setting the state
     // this will make the component re-render
-    this.setState({ countryData: data })
-    console.log('data')
-    console.log(this.state.countryData);
+    this.setState({ countryData: data });
   }
 
   render() {
@@ -179,12 +182,12 @@ class App extends React.Component {
     if (this.state.countryData) {
       return (
         <div>
+          <AddForm />
           <DeleteForm data={this.state.countryData} />
         </div>
       );
-    }
-    else {
-      return <div>Loading...</div>
+    } else {
+      return <div>Loading...</div>;
     }
   }
 }
