@@ -35,12 +35,13 @@ class AddForm extends React.Component {
   render() {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Add Country"), /*#__PURE__*/React.createElement("form", {
       onSubmit: this.handleSubmit.bind(this)
-    }, /*#__PURE__*/React.createElement("label", null, " ", "Name:", /*#__PURE__*/React.createElement("input", {
+    }, /*#__PURE__*/React.createElement("input", {
       type: "text",
       name: "name",
+      placeholder: "New Country Name",
       value: this.state.formValues["name"],
       onChange: this.handleChange.bind(this)
-    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       className: "btn btn-primary",
       type: "submit",
       value: "Submit"

@@ -64,14 +64,15 @@ class CountryDisplay extends React.Component {
               value={this.state.formValues["name"]}
               onChange={this.handleChange.bind(this)}
             >
+              <option value=''>Select a Country:</option>
               {this.countrySelections}
             </select>
             <br />
           </form>
-  
+          <br />
           <p>year: {this.state.countryDataCurrentYear['year']}</p>
-          <p>income: {this.state.countryDataCurrentYear['income']}</p>
-          <p>internet_users: {this.state.countryDataCurrentYear['internet_users']}</p>
+          <p>avg_income: ${this.state.countryDataCurrentYear['income']}</p>
+          <p>internet_users: {this.state.countryDataCurrentYear['internet_users']}%</p>
           <p>health: {this.state.countryDataCurrentYear['health']}</p>
           <p>population: {this.state.countryDataCurrentYear['population']}</p>
         </>

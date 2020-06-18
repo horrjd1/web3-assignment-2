@@ -43,16 +43,13 @@ class AddForm extends React.Component {
       <>
         <h2>Add Country</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            {" "}
-            Name:
             <input
               type="text"
               name="name"
+              placeholder="New Country Name"
               value={this.state.formValues["name"]}
               onChange={this.handleChange.bind(this)}
             />
-          </label>
           <br />
           <input className="btn btn-primary" type="submit" value="Submit" />
         </form>

@@ -1,6 +1,6 @@
-import AddForm from './addForm.js';
-import DeleteForm from './deleteForm.js';
-import CountryDisplay from './countryDisplay.js';
+import AddForm from "./addForm.js";
+import DeleteForm from "./deleteForm.js";
+import CountryDisplay from "./countryDisplay.js";
 
 function fetchCountryData() {
   return new Promise((resolve) => {
@@ -15,7 +15,6 @@ function fetchCountryData() {
     });
   });
 }
-
 
 class App extends React.Component {
   constructor(props) {
@@ -49,9 +48,29 @@ class App extends React.Component {
     if (this.state.countryData) {
       return (
         <div>
-          <CountryDisplay data={this.state.countryData} />
-          <AddForm />
-          <DeleteForm data={this.state.countryData} />
+          <div class="row">
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="card shadow-lg">
+                <div class="card-body">
+                  <CountryDisplay data={this.state.countryData} />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="card shadow-lg">
+                <div class="card-body">
+                  <AddForm />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="card shadow-lg">
+                <div class="card-body">
+                  <DeleteForm data={this.state.countryData} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {

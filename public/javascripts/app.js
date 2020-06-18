@@ -1,6 +1,6 @@
-import AddForm from './addForm.js';
-import DeleteForm from './deleteForm.js';
-import CountryDisplay from './countryDisplay.js';
+import AddForm from "./addForm.js";
+import DeleteForm from "./deleteForm.js";
+import CountryDisplay from "./countryDisplay.js";
 
 function fetchCountryData() {
   return new Promise(resolve => {
@@ -49,11 +49,31 @@ class App extends React.Component {
     // waits until the data is loaded from the fetch or local storage before loading the delete form
     // this is so that the form isnt loaded and the empty state isnt passed to the delete component before the countryData is set
     if (this.state.countryData) {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CountryDisplay, {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+        class: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "col-lg-4 d-flex align-items-stretch"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card shadow-lg"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card-body"
+      }, /*#__PURE__*/React.createElement(CountryDisplay, {
         data: this.state.countryData
-      }), /*#__PURE__*/React.createElement(AddForm, null), /*#__PURE__*/React.createElement(DeleteForm, {
+      })))), /*#__PURE__*/React.createElement("div", {
+        class: "col-lg-4 d-flex align-items-stretch"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card shadow-lg"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card-body"
+      }, /*#__PURE__*/React.createElement(AddForm, null)))), /*#__PURE__*/React.createElement("div", {
+        class: "col-lg-4 d-flex align-items-stretch"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card shadow-lg"
+      }, /*#__PURE__*/React.createElement("div", {
+        class: "card-body"
+      }, /*#__PURE__*/React.createElement(DeleteForm, {
         data: this.state.countryData
-      }));
+      }))))));
     } else {
       return /*#__PURE__*/React.createElement("div", null, "Loading...");
     }

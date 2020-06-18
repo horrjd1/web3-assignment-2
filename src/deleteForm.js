@@ -57,10 +57,11 @@ class DeleteForm extends React.Component {
             value={this.state.formValues["name"]}
             onChange={this.handleChange.bind(this)}
           >
+            <option value=''>Select a Country:</option>
             {this.countrySelections}
           </select>
           <br />
-          <input className="btn btn-primary" type="submit" value="Submit" />
+          <input className="btn btn-danger" type="submit" value="Submit" />
         </form>
       </>
     );

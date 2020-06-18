@@ -60,7 +60,9 @@ class CountryDisplay extends React.Component {
       id: "selectCountryName",
       value: this.state.formValues["name"],
       onChange: this.handleChange.bind(this)
-    }, this.countrySelections), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("p", null, "year: ", this.state.countryDataCurrentYear['year']), /*#__PURE__*/React.createElement("p", null, "income: ", this.state.countryDataCurrentYear['income']), /*#__PURE__*/React.createElement("p", null, "internet_users: ", this.state.countryDataCurrentYear['internet_users']), /*#__PURE__*/React.createElement("p", null, "health: ", this.state.countryDataCurrentYear['health']), /*#__PURE__*/React.createElement("p", null, "population: ", this.state.countryDataCurrentYear['population']));
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "Select a Country:"), this.countrySelections), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, "year: ", this.state.countryDataCurrentYear['year']), /*#__PURE__*/React.createElement("p", null, "avg_income: $", this.state.countryDataCurrentYear['income']), /*#__PURE__*/React.createElement("p", null, "internet_users: ", this.state.countryDataCurrentYear['internet_users'], "%"), /*#__PURE__*/React.createElement("p", null, "health: ", this.state.countryDataCurrentYear['health']), /*#__PURE__*/React.createElement("p", null, "population: ", this.state.countryDataCurrentYear['population']));
   }
 
 }
