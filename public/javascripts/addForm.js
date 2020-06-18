@@ -7,7 +7,8 @@ class AddForm extends React.Component {
   }
 
   handleChange(event) {
-    event.preventDefault();
+    event.preventDefault(); //creating an object containing the forms fields and inputted data
+
     let formValues = this.state.formValues;
     let key = event.target.name;
     let value = event.target.value;

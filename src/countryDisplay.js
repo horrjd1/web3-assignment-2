@@ -2,10 +2,10 @@ class CountryDisplay extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        formValues: {},
-        allCountryData: this.props.data,
-        countryData: {},
-        countryDataCurrentYear: {year: '', income: '', internet_users: '', health: '', population: ''},
+        formValues: {}, // form values
+        allCountryData: this.props.data, // all country data available
+        countryData: {}, // all data for one country
+        countryDataCurrentYear: {year: '', income: '', internet_users: '', health: '', population: ''}, // data for a country on a single year
       };
   
       // saving the passed country data prop into state
@@ -36,7 +36,6 @@ class CountryDisplay extends React.Component {
         }
          
       })
-      console.log(countryData['data'])
   
       let year = '2010'
   
@@ -53,7 +52,7 @@ class CountryDisplay extends React.Component {
     handleSubmit(event) {}
   
     render() {
-      // only one tag can be returned so containing h2 and form within empty <>
+      // only one tag can be returned so containing all elements within empty <>
       return (
         <>
           <h2>Search Country</h2>

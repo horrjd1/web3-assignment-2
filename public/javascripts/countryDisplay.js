@@ -3,15 +3,19 @@ class CountryDisplay extends React.Component {
     super(props);
     this.state = {
       formValues: {},
+      // form values
       allCountryData: this.props.data,
+      // all country data available
       countryData: {},
+      // all data for one country
       countryDataCurrentYear: {
         year: '',
         income: '',
         internet_users: '',
         health: '',
         population: ''
-      }
+      } // data for a country on a single year
+
     }; // saving the passed country data prop into state
 
     this.state.countryData = this.props.data; //making the options for the country drop down
@@ -39,7 +43,6 @@ class CountryDisplay extends React.Component {
         return obj;
       }
     });
-    console.log(countryData['data']);
     let year = '2010'; // filling info thats going to be displayed on the page
 
     this.state.countryDataCurrentYear.year = year;
@@ -52,7 +55,7 @@ class CountryDisplay extends React.Component {
   handleSubmit(event) {}
 
   render() {
-    // only one tag can be returned so containing h2 and form within empty <>
+    // only one tag can be returned so containing all elements within empty <>
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Search Country"), /*#__PURE__*/React.createElement("form", {
       onSubmit: this.handleSubmit.bind(this)
     }, /*#__PURE__*/React.createElement("select", {
