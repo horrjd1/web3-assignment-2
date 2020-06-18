@@ -1,9 +1,12 @@
+$shade2: #404040;
+$highlight: #00b7ff;
+
 body {
-  background-color: #404040;
+  background-color: $shade2;
 }
 
 a {
-  color: #00b7ff;
+  color: $highlight;
 }
 
 .container {
@@ -20,5 +23,5 @@ input {
 }
 
 .card {
-  width: 100%;
+    width: 100%;
 }
